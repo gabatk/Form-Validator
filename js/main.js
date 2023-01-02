@@ -6,15 +6,27 @@ const pass2 = document.querySelector('#password2');
 const email = document.querySelector('#email');
 const popup = document.querySelector('#popup');
 
-const showError = (inputValue, msg) => {
-	// argument inputValue przechowuje nasze pojedyncze INPUTy;
+const showError = (input, msg) => {
+	// argument input przechowuje nasze pojedyncze INPUTy;
 	// argument MSG przechowuje placeholder;
+
+	const formBox = inputValue.parentElement;
+	const errorMsg = formBox.querySelector('.error-text');
+	formBox.classList.add('.error');
+	errorMsg.textContent = msg;
+};
+
+const clearError = input => {
+	const formBox = inputValue.parentElement;
+	formBox.classList.remove('.error');
 };
 
 const checkForm = input => {
 	input.forEach(el => {
 		if (el.value === '') {
 			showError(el, el.placeholder);
+		} else {
+			clearError(el);
 		}
 	});
 };
