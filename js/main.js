@@ -77,5 +77,6 @@ clearBtn.addEventListener('click', e => {
 	e.preventDefault();
 	[username, pass, pass2, email].forEach(element => {
 		element.value = '';
+		clearError(el);
 	});
 });
