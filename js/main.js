@@ -10,14 +10,14 @@ const showError = (input, msg) => {
 	// argument input przechowuje nasze pojedyncze INPUTy;
 	// argument MSG przechowuje placeholder;
 
-	const formBox = inputValue.parentElement;
+	const formBox = input.parentElement;
 	const errorMsg = formBox.querySelector('.error-text');
 	formBox.classList.add('.error');
 	errorMsg.textContent = msg;
 };
 
 const clearError = input => {
-	const formBox = inputValue.parentElement;
+	const formBox = input.parentElement;
 	formBox.classList.remove('.error');
 };
 
@@ -34,14 +34,26 @@ const checkForm = input => {
 // Argument INPUT z funkcji "checkForm" przechowuje tablicę z naszymi inputami;
 //  Argument EL odnosi się do każdej zmiennej, którą umieściliśmy w tablicy;
 
+const checkLength = (input, min) => {
+	if (input.value.length < min) {
+		showError(
+			input,
+			`Your ${input.previousElementSibling.innerText} is to short, min. ${min} characters`
+		);
+	}
+};
+
 sendBtn.addEventListener('click', e => {
 	e.preventDefault();
 
-	checkForm((username, pass, pass2, email));
+	checkForm([username, pass, pass2, email]);
+	checkLength(username, 3);
+	checkLength(pass, 8);
 });
 
 clearBtn.addEventListener('click', e => {
-	e.preventDefault()[(username, pass, pass2, email)].forEach(element => {
+	e.preventDefault();
+	[username, pass, pass2, email].forEach(element => {
 		element.value = '';
 	});
 });
