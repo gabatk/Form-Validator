@@ -12,13 +12,13 @@ const showError = (input, msg) => {
 
 	const formBox = input.parentElement;
 	const errorMsg = formBox.querySelector('.error-text');
-	formBox.classList.add('.error');
+	formBox.classList.add('error');
 	errorMsg.textContent = msg;
 };
 
 const clearError = input => {
 	const formBox = input.parentElement;
-	formBox.classList.remove('.error');
+	formBox.classList.remove('error');
 };
 
 const checkForm = input => {
@@ -38,7 +38,10 @@ const checkLength = (input, min) => {
 	if (input.value.length < min) {
 		showError(
 			input,
-			`Your ${input.previousElementSibling.innerText} is to short, min. ${min} characters`
+			`Your ${input.previousElementSibling.innerText.slice(
+				0,
+				-1
+			)} is to short, min. ${min} characters`
 		);
 	}
 };
