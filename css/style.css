@@ -125,3 +125,18 @@ form {
 .show-popup {
     top: 150px;
 }
+
+.form-pass {
+    position: relative;
+}
+
+.fa-eye, .fa-eye-slash {
+    position: absolute;
+    right: 5px;
+    padding: 10px;
+    color: rgb(3, 96, 173);
+}
+
+.fa-eye-slash {
+    color: rgb(80, 92, 101); 
+}

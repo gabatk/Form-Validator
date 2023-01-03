@@ -5,6 +5,7 @@ const pass = document.querySelector('#password');
 const pass2 = document.querySelector('#password2');
 const email = document.querySelector('#email');
 const popup = document.querySelector('.popup');
+const eyeIcons = document.querySelectorAll('.fa-eye');
 
 const showError = (input, msg) => {
 	// argument input przechowuje nasze pojedyncze INPUTy;
@@ -78,6 +79,18 @@ const checkErrors = () => {
 	}
 };
 
+const showPassword = e => {
+	let clickedElement = e.target;
+	clickedElement.classList.toggle('fa-eye-slash');
+	clickedElement.classList.toggle('fa-eye');
+
+	if (clickedElement.classList.contains('fa-eye-slash')) {
+		clickedElement.previousElementSibling.setAttribute('type', 'text');
+	} else {
+		clickedElement.previousElementSibling.setAttribute('type', 'password');
+	}
+};
+
 sendBtn.addEventListener('click', e => {
 	e.preventDefault();
 
@@ -95,4 +108,8 @@ clearBtn.addEventListener('click', e => {
 		element.value = '';
 		clearError(el);
 	});
+});
+
+eyeIcons.forEach(eyeIcon => {
+	eyeIcon.addEventListener('click', showPassword);
 });
