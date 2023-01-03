@@ -46,12 +46,20 @@ const checkLength = (input, min) => {
 	}
 };
 
+const checkPassword = (pass1, pass2) => {
+	if (pass1.value !== pass2.value) {
+		showError(pass2, "Passwords don't match");
+	}
+};
+
 sendBtn.addEventListener('click', e => {
 	e.preventDefault();
 
 	checkForm([username, pass, pass2, email]);
 	checkLength(username, 3);
 	checkLength(pass, 8);
+
+	checkPassword(pass, pass2);
 });
 
 clearBtn.addEventListener('click', e => {
